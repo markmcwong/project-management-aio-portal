@@ -3,8 +3,12 @@ import {
 	Button
 }
 from 'react-bootstrap';
+
 import authorize from '../reducers/authorize.js';
-import wunderlistClick from '../reducers/wunderlistClick.js';
+
+function wunderlistClick(){ 
+    window.location.href = 'https://www.wunderlist.com/oauth/authorize?client_id=518dd73af2d377583d18&redirect_uri=https://react-markmcwong.c9users.io/oauth2/callback&state=RANDOM'
+}
 
 const ButtonGroup = () => (
     <div>
@@ -14,4 +18,4 @@ const ButtonGroup = () => (
     </div>
 )
 
-export default ButtonGroup
+export default ButtonGroup;

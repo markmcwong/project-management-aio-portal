@@ -6,8 +6,9 @@ import BigCalendar from 'react-big-calendar';
 import moment from 'moment';
 import GoogleLogin from 'react-google-login';
 import ButtonGroup from './components/button-group.js';
-// import {fetchCalendar} from './reducers/fetchCalendar.js';
 
+
+import {fetchCalendar} from './reducers/fetchCalendar.js';
 import {wunderlistReminder} from './reducers/wunderlistReminder.js'
 
 BigCalendar.momentLocalizer(moment);
@@ -21,8 +22,11 @@ class App extends Component {
 	}
 	 componentDidMount () {
 	    wunderlistReminder((events) => {
-	      this.setState({events})
-	      console.log(this.state)
+			this.setState({events})
+		    fetchCalendar((events) => {
+			    var slice = this.state.events.slice();    
+			    this.setState({events: [...slice,...events]});
+		    })
 	    })
 	}
 	render() {
